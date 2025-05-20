@@ -1,4 +1,5 @@
 from database import get_banknotes, update_banknotes
+from itertools import groupby
 
 def greedy_cash_withdrawal(banknotes, amount):
     """
@@ -8,7 +9,7 @@ def greedy_cash_withdrawal(banknotes, amount):
     remaining = amount
     updated_banknotes = {denomination: quantity for denomination, quantity in banknotes}
 
-    for denomination, quantity in banknotes:
+    for denomination, quantity in sorted(banknotes, key=lambda x: -x[0]):
         if remaining == 0:
             break
         count = min(remaining // denomination, quantity)
@@ -22,8 +23,7 @@ def greedy_cash_withdrawal(banknotes, amount):
 
     # Обновляем состояние банкомата
     update_banknotes(updated_banknotes)
-    return result
-
+    return sorted(result, reverse=True)
 
 def dp_cash_withdrawal(banknotes, amount):
     """
@@ -55,8 +55,7 @@ def dp_cash_withdrawal(banknotes, amount):
 
     # Обновляем состояние банкомата
     update_banknotes(updated_banknotes)
-    return result
-
+    return sorted(result, reverse=True)
 
 def cash_withdrawal(amount):
     """

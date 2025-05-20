@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from alg import cash_withdrawal
 from database import init_db, get_banknotes
 import uvicorn
+from itertools import groupby
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -12,6 +13,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Инициализация базы данных
 init_db()
+
+# Фильтр для группировки купюр
+templates.env.filters["groupby"] = lambda x: [(k, list(g)) for k, g in groupby(sorted(x))]
 
 @app.get("/", response_class=HTMLResponse)
 async def show_form(request: Request):

@@ -1,26 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод данных для снятия денег</title>
+    <title>Симуляция банкомата</title>
     <link rel="stylesheet" href="/static/css/form.css">
 </head>
 <body>
-    <h1 class="form-title">Снятие денег</h1>
-    <p><strong>Текущее состояние банкомата:</strong></p>
-    <div class="banknotes-container">
-        {% for denomination, quantity in banknotes %}
-            <div class="banknote-card">
-                <div class="denomination">{{ denomination }} руб.</div>
-                <div class="quantity">{{ quantity }} шт.</div>
+    <div class="atm-container">
+        <div class="header">
+            <h1>Прототип банкомата</h1>
+        </div>
+
+        <div class="content">
+            <form action="/withdraw" method="post">
+                <div class="input-group">
+                    <input type="number" id="amount" name="amount" required placeholder="Введите сумму">
+                    <span>руб.</span>
+                </div>
+                <button type="submit">Снять деньги</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <h3>Доступный номинал:</h3>
+            <div class="bills-grid">
+                {% for denomination, quantity in banknotes %}
+                <div class="bill-card">
+                    <div class="bill-denomination">{{ denomination }}</div>
+                    <div class="bill-count">
+                        {{ quantity }} 
+                        {% if quantity % 100 >= 11 and quantity % 100 <= 14 %}
+                            купюр
+                        {% else %}
+                            {% set last_digit = quantity % 10 %}
+                            {% if last_digit == 1 %}
+                                купюра
+                            {% elif last_digit >= 2 and last_digit <= 4 %}
+                                купюры
+                            {% else %}
+                                купюр
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
-    <form action="/withdraw" method="post">
-        <label for="amount">Введите сумму для снятия:</label><br>
-        <input type="number" id="amount" name="amount" required><br><br>
-        <button type="submit">Снять деньги</button>
-    </form>
 </body>
 </html>
