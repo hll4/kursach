@@ -135,6 +135,7 @@ button:active {
     justify-content: center;
     font-weight: bold;
     margin-right: 0.75rem;
+    padding: 0 0.2rem; /* Добавлено для симметрии с символом ₽ */
 }
 
 .bill-count {

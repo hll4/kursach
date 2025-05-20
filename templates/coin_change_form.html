@@ -27,7 +27,7 @@
             <div class="bills-grid">
                 {% for denomination, quantity in banknotes %}
                 <div class="bill-card">
-                    <div class="bill-denomination">{{ denomination }}</div>
+                    <div class="bill-denomination">{{ denomination }}₽</div>
                     <div class="bill-count">
                         {{ quantity }} 
                         {% if quantity % 100 >= 11 and quantity % 100 <= 14 %}
