@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Результат</title>
-  <link rel="stylesheet" href="/static/css/result.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат снятия денег</title>
+    <link rel="stylesheet" href="/static/css/result.css">
 </head>
 <body>
-  <div class="result-container">
     <h1>Результат снятия денег</h1>
     <div class="change">
-      {% if result is string %}
-        <p>{{ result }}</p>
-      {% else %}
-        {% for coin in result %}
-          <div class="coin">{{ coin }}</div>
-        {% endfor %}
-      {% endif %}
+        {% if result is string %}
+            <p>{{ result }}</p>
+        {% else %}
+            {% for coin in result %}
+                <div class="coin">{{ coin }} руб.</div>
+            {% endfor %}
+        {% endif %}
     </div>
-    <a href="/" class="back-link">Вернуться к форме</a>
-  </div>
+    <br>
+    <a href="/">Вернуться к форме</a>
 </body>
 </html>
