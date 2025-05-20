@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод данных для снятия денег</title>
-    <link rel="stylesheet" href="/static/css/form.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Снятие денег</title>
+  <link rel="stylesheet" href="/static/css/form.css"/>
 </head>
 <body>
-    <h1 class="form-title">Снятие денег</h1>
-    <p><strong>Текущее состояние банкомата:</strong></p>
-    <div class="banknotes-container">
-        {% for denomination, quantity in banknotes %}
-            <div class="banknote-card">
-                <div class="denomination">{{ denomination }} руб.</div>
-                <div class="quantity">{{ quantity }} шт.</div>
-            </div>
-        {% endfor %}
+  <div class="form-container">
+    <div class="header">
+      <h1>Снятие денег</h1>
+      <p>Введите сумму и получите размен</p>
     </div>
+
+    <div class="banknotes-container">
+      {% for denomination, quantity in banknotes %}
+        <div class="banknote-card">
+          <div class="denomination">{{ denomination }} руб.</div>
+          <div class="quantity">{{ quantity }} шт.</div>
+        </div>
+      {% endfor %}
+    </div>
+
     <form action="/withdraw" method="post">
-        <label for="amount">Введите сумму для снятия:</label><br>
-        <input type="number" id="amount" name="amount" required><br><br>
-        <button type="submit">Снять деньги</button>
+      <label for="amount">Введите сумму:</label><br/>
+      <input type="number" id="amount" name="amount" required/><br/><br/>
+      <button type="submit">Снять деньги</button>
     </form>
+  </div>
 </body>
 </html>
