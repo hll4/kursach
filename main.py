@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from alg import cash_withdrawal
-from database import init_db, get_banknotes
+from database import init_db, get_banknotes, reset_banknotes
 import uvicorn
 from itertools import groupby
 
@@ -27,9 +27,7 @@ async def withdraw_cash(request: Request, amount: int = Form(...)):
     try:
         if amount <= 0:
             raise ValueError("Сумма должна быть положительным числом.")
-
         result = cash_withdrawal(amount)
-
         if isinstance(result, str):
             return templates.TemplateResponse("coin_change_result.html", {
                 "request": request,
@@ -42,6 +40,11 @@ async def withdraw_cash(request: Request, amount: int = Form(...)):
             })
     except Exception as e:
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
+
+@app.get("/reset")
+async def reset_banknotes_route():
+    reset_banknotes()
+    return RedirectResponse(url="/", status_code=303)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
