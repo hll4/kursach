@@ -1,30 +1,37 @@
 body {
-    font-family: Arial, sans-serif;
     background-color: #f8d7da;
+}
+.error-container {
+    font-family: Arial, sans-serif;
     color: #721c24;
     text-align: center;
     padding: 50px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-h1 {
+.error-title {
     font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-p {
+.error-message {
     font-size: 1.2em;
     margin-bottom: 30px;
 }
 
-a {
+.back-link {
     display: inline-block;
     margin-top: 20px;
+}
+
+.back-link a {
     text-decoration: none;
     color: #007bff;
     font-weight: bold;
     font-size: 1.1em;
 }
 
-a:hover {
+.back-link a:hover {
     text-decoration: underline;
 }

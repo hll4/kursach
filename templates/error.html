@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="/static/css/error.css">
 </head>
 <body>
-    <h1>Произошла ошибка</h1>
-    <p>{{ error }}</p>
-    <a href="/">Вернуться к форме</a>
+    <div class="error-container">
+        <div class="error-title">Ошибка обработки данных</div>
+        <div class="error-message">{{ error }}</div>
+        <div class="back-link">
+            <a href="/">Вернуться к форме</a>
+        </div>
+    </div>
 </body>
 </html>
