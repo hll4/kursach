@@ -1,10 +1,9 @@
 :root {
     --indigo: #4f46e5;
     --purple: #7c3aed;
-    --gray-light: #f3f4f6;
-    --gray-medium: #9ca3af;
     --white: #ffffff;
     --black: #000000;
+    --yellow: #facc15;
 }
 
 * {
@@ -38,23 +37,16 @@ body {
     text-align: center;
 }
 
-.header h1 {
+.page-title {
     font-size: 1.875rem;
-    margin: 0;
-}
-
-.header p {
-    margin: 0.25rem 0 0;
-    opacity: 0.9;
 }
 
 .content {
     padding: 1.5rem;
 }
 
-.input-group {
+.input-wrapper {
     position: relative;
-    margin-bottom: 1rem;
 }
 
 input[type="number"] {
@@ -71,12 +63,16 @@ input[type="number"]:focus {
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-.input-group span {
+.currency-symbol {
     position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--gray-medium);
+    color: #9ca3af;
+}
+
+.submit-button {
+    margin-top: 1rem;
 }
 
 button {
@@ -104,7 +100,7 @@ button:active {
     border-top: 1px solid #e5e7eb;
 }
 
-.footer h3 {
+.section-title {
     margin: 0 0 1rem;
     font-size: 1.125rem;
 }
@@ -127,23 +123,23 @@ button:active {
 
 .bill-denomination {
     height: 1.5rem;
-    background-color: #facc15;
+    background-color: var(--yellow);
     border-radius: 0.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     margin-right: 0.75rem;
-    padding: 0 0.2rem; /* Добавлено для симметрии с символом ₽ */
+    padding: 0 0.2rem;
 }
 
 .bill-count {
     font-size: 0.875rem;
-    color: var(--gray-medium);
+    color: #9ca3af;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-} 
+}

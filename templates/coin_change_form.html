@@ -9,19 +9,23 @@
 <body>
     <div class="atm-container">
         <div class="header">
-            <h1>Прототип банкомата</h1>
+            <div class="page-title">Прототип банкомата</div>
         </div>
         <div class="content">
             <form action="/withdraw" method="post">
                 <div class="input-group">
-                    <input type="number" id="amount" name="amount" required placeholder="Введите сумму">
-                    <span>руб</span>
+                    <div class="input-wrapper">
+                        <input type="number" id="amount" name="amount" required placeholder="Введите сумму">
+                        <div class="currency-symbol">руб</div>
+                    </div>
                 </div>
-                <button type="submit">Снять деньги</button>
+                <div class="submit-button">
+                    <button type="submit">Снять деньги</button>
+                </div>
             </form>
         </div>
         <div class="footer">
-            <h3>Доступный номинал:</h3>
+            <div class="section-title">Доступный номинал:</div>
             <div class="bills-grid">
                 {% for denomination, quantity in banknotes %}
                 <div class="bill-card">
