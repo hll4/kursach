@@ -8,20 +8,22 @@
 </head>
 <body>
     <div class="result-container">
-        <h1>Результат размена</h1>
-        <div class="change">
+        <div class="page-title">Результат размена</div>
+        <div class="change-section">
             {% if result is string %}
-                <p class="message">{{ result }}</p>
+                <div class="message">{{ result }}</div>
             {% else %}
                 {% for coin in result %}
                     <div class="coin">{{ coin }} руб.</div>
                 {% endfor %}
             {% endif %}
         </div>
-        <a href="/" class="back-button">Вернуться на главную страницу</a>
-        <form action="/reset" method="get">
-            <button type="submit" class="back-button">Обновить номинал</button>
-        </form>
+        <div class="button-group">
+            <a href="/" class="back-button">Вернуться на главную страницу</a>
+            <form action="/reset" method="get">
+                <button type="submit" class="back-button">Обновить номинал</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

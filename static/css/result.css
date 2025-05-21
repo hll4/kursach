@@ -5,6 +5,7 @@
     --gray-light: #f3f4f6;
     --gray-medium: #9ca3af;
     --black: #000000;
+    --red: #ef4444;
 }
 
 * {
@@ -33,14 +34,14 @@ body {
     text-align: center;
 }
 
-h1 {
+.page-title {
     font-size: 2.25rem;
     font-weight: bold;
     color: var(--indigo);
     margin-bottom: 2rem;
 }
 
-.change {
+.change-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -73,6 +74,12 @@ h1 {
     border-left: 4px solid var(--red);
 }
 
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .back-button {
     display: inline-block;
     background: linear-gradient(to right, var(--indigo), var(--purple));
@@ -82,7 +89,6 @@ h1 {
     text-decoration: none;
     font-weight: bold;
     transition: all 0.2s ease;
-    margin-top: 1rem;
     border: none;
 }
 
@@ -94,4 +100,3 @@ h1 {
 .back-button:active {
     transform: translateY(0);
 }
-
