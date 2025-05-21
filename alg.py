@@ -1,5 +1,4 @@
 from database import get_banknotes, update_banknotes
-from itertools import groupby
 
 def greedy_cash_withdrawal(banknotes, amount):
     """

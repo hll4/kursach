@@ -13,7 +13,7 @@
 
 body {
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: linear-gradient(to bottom right, #bfdbfe, #cbd5e1);
     min-height: 100vh;
     display: flex;
@@ -126,7 +126,6 @@ button:active {
 }
 
 .bill-denomination {
-    width: 2.5rem;
     height: 1.5rem;
     background-color: #facc15;
     border-radius: 0.25rem;
@@ -142,3 +141,9 @@ button:active {
     font-size: 0.875rem;
     color: var(--gray-medium);
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} 

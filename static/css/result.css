@@ -83,6 +83,7 @@ h1 {
     font-weight: bold;
     transition: all 0.2s ease;
     margin-top: 1rem;
+    border: none;
 }
 
 .back-button:hover {

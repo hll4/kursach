@@ -14,7 +14,13 @@ def init_db():
     # Добавляем начальные данные (если таблица пустая)
     cursor.execute("SELECT COUNT(*) FROM banknotes")
     if cursor.fetchone()[0] == 0:
-        initial_data = [(100, 10), (50, 20), (20, 50), (10, 100)]  # Номинал и количество
+        initial_data = [
+            (5000, 10),
+            (1000, 20),
+            (500, 30),
+            (100, 40),
+            (50, 50)
+        ]
         cursor.executemany("INSERT INTO banknotes (denomination, quantity) VALUES (?, ?)", initial_data)
     conn.commit()
     conn.close()
@@ -41,7 +47,13 @@ def update_banknotes(updated_banknotes):
 def reset_banknotes():
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
-    initial_data = [(100, 10), (50, 20), (20, 50), (10, 100)]
+    initial_data = [
+        (5000, 10),
+        (1000, 20),
+        (500, 30),
+        (100, 40),
+        (50, 50)
+    ]
     cursor.execute("DELETE FROM banknotes")
     cursor.executemany("INSERT INTO banknotes (denomination, quantity) VALUES (?, ?)", initial_data)
     conn.commit()
