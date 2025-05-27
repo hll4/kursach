@@ -57,6 +57,8 @@ def dp_cash_withdrawal(banknotes, amount):
     return sorted(result, reverse=True)
 
 def cash_withdrawal(amount):
+    if amount <= 0:
+        raise ValueError("Сумма должна быть положительным числом")
     """
     Основная функция для выбора метода выдачи денег.
     """
