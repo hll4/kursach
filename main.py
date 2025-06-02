@@ -11,17 +11,18 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Инициализация базы данных
 init_db()
 
-# Фильтр для группировки купюр
+#фильтр для группировки
 templates.env.filters["groupby"] = lambda x: [(k, list(g)) for k, g in groupby(sorted(x))]
 
+#форма ввода
 @app.get("/", response_class=HTMLResponse)
 async def show_form(request: Request):
     banknotes = get_banknotes()
     return templates.TemplateResponse("coin_change_form.html", {"request": request, "banknotes": banknotes})
 
+#обработка запроса
 @app.post("/withdraw")
 async def withdraw_cash(request: Request, amount: int = Form(...)):
     try:
@@ -41,6 +42,7 @@ async def withdraw_cash(request: Request, amount: int = Form(...)):
     except Exception as e:
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
 
+#сброс до начального состояния
 @app.get("/reset")
 async def reset_banknotes_route():
     reset_banknotes()

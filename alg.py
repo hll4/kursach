@@ -1,9 +1,9 @@
 from database import get_banknotes, update_banknotes
 
 def greedy_cash_withdrawal(banknotes, amount):
-    """
-    Жадный алгоритм для выдачи денег с учетом доступного количества купюр.
-    """
+
+#Жадный алгоритм для выдачи денег с учетом доступного количества купюр
+
     result = []
     remaining = amount
     updated_banknotes = {denomination: quantity for denomination, quantity in banknotes}
@@ -20,14 +20,13 @@ def greedy_cash_withdrawal(banknotes, amount):
     if remaining != 0:
         return "Невозможно выдать запрошенную сумму с текущими купюрами"
 
-    # Обновляем состояние банкомата
     update_banknotes(updated_banknotes)
     return sorted(result, reverse=True)
 
 def dp_cash_withdrawal(banknotes, amount):
-    """
-    Метод динамического программирования для выдачи денег с учетом доступного количества купюр.
-    """
+
+    #Метод динамического программирования
+ 
     dp = [float('inf')] * (amount + 1)
     dp[0] = 0
     coin_used = [-1] * (amount + 1)
@@ -52,9 +51,10 @@ def dp_cash_withdrawal(banknotes, amount):
         remaining -= coin
         updated_banknotes[coin] -= 1
 
-    # Обновляем состояние банкомата
     update_banknotes(updated_banknotes)
     return sorted(result, reverse=True)
+
+#основная функция
 
 def cash_withdrawal(amount):
     if amount <= 0:
@@ -64,7 +64,6 @@ def cash_withdrawal(amount):
     """
     banknotes = get_banknotes()
 
-    # Проверяем, можно ли использовать жадный алгоритм
     can_use_greedy = True
     for i in range(len(banknotes) - 1):
         if banknotes[i + 1][0] % banknotes[i][0] != 0:

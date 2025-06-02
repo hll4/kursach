@@ -1,17 +1,15 @@
 import sqlite3
 
-# Инициализация базы данных
+#инициализация бд
 def init_db():
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
-    # Создаем таблицу для хранения купюр
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS banknotes (
             denomination INTEGER PRIMARY KEY,
             quantity INTEGER NOT NULL
         )
     """)
-    # Добавляем начальные данные (если таблица пустая)
     cursor.execute("SELECT COUNT(*) FROM banknotes")
     if cursor.fetchone()[0] == 0:
         initial_data = [
@@ -25,7 +23,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Получение всех доступных купюр
 def get_banknotes():
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
@@ -34,7 +31,7 @@ def get_banknotes():
     conn.close()
     return banknotes
 
-# Обновление количества купюр после выдачи
+#обновление количества купюр 
 def update_banknotes(updated_banknotes):
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
@@ -43,7 +40,7 @@ def update_banknotes(updated_banknotes):
     conn.commit()
     conn.close()
 
-# Восстановление начального состояния купюр
+#восстановление начального состояния
 def reset_banknotes():
     conn = sqlite3.connect("atm.db")
     cursor = conn.cursor()
